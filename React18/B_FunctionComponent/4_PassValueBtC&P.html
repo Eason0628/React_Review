@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      class Parent extends React.Component {
+        state = {
+          title: "Parent Level",
+        };
+
+        //注意这里要用箭头函数，否则this指向会有问题，this.fn找不到Parent实例的方法
+        fn = (param) => {
+          this.setState({ title: param });
+        };
+
+        render() {
+          return (
+            <>
+              <h1>{this.state.title}</h1>
+              <Child fn={this.fn} />
+            </>
+          );
+        }
+      }
+
+      class Child extends React.Component {
+        render() {
+          const { fn } = this.props;
+          return (
+            <>
+              <h1>Child</h1>
+              <button onClick={() => fn("Child Level")}>按钮</button>
+            </>
+          );
+        }
+      }
+
+      root.render(<Parent />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      class Welecome extends React.Component {
+        state = {
+          num: 1,
+        };
+        add = () => {
+          // 如果直接传递一个对象，那么React会默认合并更新，可能会导致状态更新不正确
+          // 避免合并更新，可以使用回调函数来更新状态
+          this.setState((prev) => {
+            console.log("prev:", JSON.stringify(prev));
+            return {
+              num: prev.num + 1,
+            };
+          });
+        };
+        add2 = () => {
+          for (let i = 0; i < 10; i++) {
+            this.setState((prev) => {
+              return {
+                num: prev.num + 1, // setState中如果想避免合并更新，可以使用回调函数
+              };
+            });
+            console.log(this.state.num);
+          }
+        };
+
+        render() {
+          return (
+            <>
+              <h1>{this.state.num}</h1>
+              <button onClick={this.add2}>按钮</button>
+            </>
+          );
+        }
+      }
+
+      root.render(
+        <>
+          <Welecome />
+        </>,
+      );
+    </script>
+  </body>
+</html>

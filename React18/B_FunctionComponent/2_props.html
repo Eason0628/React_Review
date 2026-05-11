@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+      
+      function Welcome(props) {
+        return (
+          <>
+            <h2>props.name: {props.name}</h2>
+            <div>{props.children}</div>
+          </>
+        );
+      }
+
+      root.render(
+        <>
+          <Welcome name="张三">
+            <h1>组件中间内容</h1>
+          </Welcome>
+        </>,
+      );
+    </script>
+  </body>
+</html>

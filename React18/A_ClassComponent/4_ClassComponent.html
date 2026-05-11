@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      // 1.创建一个类组件，必须继承React.Component类,并且必须有一个render方法，render方法必须返回一个jsx元素
+      class Welcom extends React.Component {
+        render() {
+          return <h1>hello class component {/* 这是jsx中注释的写法 */}</h1>;
+        }
+      }
+
+      //======================================================================================================
+      // 2.组件名必须以大写字母开头，否则会被当成html标签解析
+      // 3.模拟一个导航栏组件
+      class Navi extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>hello Navi</h1>
+            </div>
+          );
+        }
+      }
+
+      root.render(
+        <>
+          <Welcom />
+          <Navi />
+        </>,
+      );
+    </script>
+  </body>
+</html>

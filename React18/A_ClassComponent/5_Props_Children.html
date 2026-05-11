@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      // 组件双标签中传递的数据可以通过this.props.children来获取
+      class Welcom extends React.Component {
+        render() {
+          return (
+            <div>
+              <h2>hello</h2>
+              {this.props.children}
+            </div>
+          );
+        }
+      }
+
+      let testTarget = <Welcom />;
+      // JSX中标签数组会被自动展开
+      let targetArray = [<h1>111</h1>, <h1>222</h1>, <h1>333</h1>];
+
+      root.render(
+        <>
+          <Welcom>
+            <h1>我是标签内传递的内容1</h1>
+            <h1>我是标签内传递的内容2</h1>
+          </Welcom>
+          {testTarget}
+          {targetArray}
+        </>,
+      );
+    </script>
+  </body>
+</html>

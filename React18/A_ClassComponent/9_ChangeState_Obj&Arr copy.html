@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      class Welecome extends React.Component {
+        state = {
+          num: 0,
+          arr: [1, 2, 3],
+          obj: { name: "⼩明", age: 18 },
+        };
+
+        changeNum = () => {
+          let { num, arr, obj } = this.state;
+          // 1.不能直接修改state,必须采取setState⽅法去更改
+          this.setState({ num: this.state.num + 1 });
+
+          // 2.this.state.arr.push(4); // 不能直接修改state中的数组，必须通过setState来修改,且直接修改原数组不会触发render，要通过一下方式来修改
+          this.setState({ arr: [...arr, 4, 5] });
+          this.setState({ obj: { ...this.state.obj, name: "小红" } });
+        };
+
+        render() {
+          console.log("render executed");
+          return (
+            <div>
+              <h1>当前的num值是：{this.state.num}</h1>
+              <h1>当前的arr值是：{this.state.arr.join(",")}</h1>
+              <h1>当前的obj值是：{JSON.stringify(this.state.obj)}</h1>
+              <button onClick={this.changeNum}>点击改变num</button>
+            </div>
+          );
+        }
+      }
+
+      // 对于数组和对象，必须整体替换，即
+      // this.setState({
+      // 数组名:新数组
+      // 对象：新对象
+      // })
+
+      root.render(
+        <>
+          <Welecome />
+        </>,
+      );
+    </script>
+  </body>
+</html>

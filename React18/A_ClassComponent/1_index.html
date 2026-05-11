@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      //1.获取到这个挂载点元素
+      var container = document.getElementById("app");
+      //2.创建⼀个根节点,接收我们的挂载点元素对象当参数
+      var root = ReactDOM.createRoot(container);
+
+      //3.调⽤渲染⽅法渲染⻚⾯,render⾥⾯放的是⻚⾯内容(内容指的是html标签或者组件)
+      root.render(<h1>我是react</h1>); //对于jsx来说，html标签不需要加引号
+
+      //也可以简写为
+      //ReactDOM.createRoot(document.getElementById("app")).render(<h1>哈哈哈哈</h1>)
+    </script>
+  </body>
+</html>

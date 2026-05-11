@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      // 1.jsx中想写变量，使⽤{} 就可以插⼊变量{ }相当于提供了js的执⾏环境，⼤括号⾥可以任意的js表达式（由运算符连接的），不能写语句（声明语句，if 、for）
+      let a = "title";
+      let txt = "hello jsx";
+      let color = "green";
+      let cssStyle = {
+        width: "50px",
+        height: "50px",
+        color: color,
+      };
+      let url = "https://www.baidu.com";
+
+      // 3.jsx中style必须写成对象的形式
+      let ele = (
+        <div className={a} style={{ color: color, fontSize: "20px" }}>
+          <h1>{txt}</h1>
+        </div>
+      );
+
+      // 4.样式中有多个单词组成的样式不能⽤横线连接，改为驼峰式命名法
+      let ele2 = (
+        <div
+          className={a}
+          style={{ color: color, width: "200px", marginLeft: "50px" }}
+        >
+          <h1>{txt}</h1>
+          <a href={url}>百度</a>
+        </div>
+      );
+
+      // 5.样式中是数字的，单位可以省略
+      let ele3 = (
+        <div className={a} style={{ color: color, width: 200, marginLeft: 50 }}>
+          <h1>{txt}</h1>
+          <a href={url}>百度</a>
+        </div>
+      );
+
+      
+      root.render(ele2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      class Welecome extends React.Component {
+        state = {
+          num: 1,
+        };
+        add = () => {
+          this.setState(
+            {
+              num: this.state.num + 1,
+            },
+            () => {
+              console.log("CallBack:", this.state.num); //1. 证明更新是异步的
+            },
+          ); //2. setState的第二个参数是一个回调函数，在状态更新并且组件重新渲染完成后会被调用，所以在这里打印this.state.num就能拿到最新的值了
+          console.log(this.state.num); //1. 证明更新是异步的
+        };
+
+        render() {
+          return (
+            <>
+              <h1>{this.state.num}</h1>
+              <button onClick={this.add}>按钮</button>
+            </>
+          );
+        }
+      }
+
+      root.render(
+        <>
+          <Welecome />
+        </>,
+      );
+    </script>
+  </body>
+</html>
