@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--react核⼼包-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--react dom相关的包-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 提供es6和jsx的⽀持-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!--提供⼀个挂载点-->
+    <div id="app"></div>
+
+    <!-- text/babel 用于支持、解析jsx语法 -->
+    <script type="text/babel">
+      var container = document.getElementById("app");
+      var root = ReactDOM.createRoot(container);
+
+      class Welcome extends React.Component {
+        ref = React.createRef();
+        //  React.createRef()适⽤于类组件
+        handleClick = () => {
+          console.log(this.ref.current);
+        };
+        render() {
+          return (
+            <>
+              <div ref={this.ref}>myRef</div>
+              <button onClick={this.handleClick}>点击我</button>
+            </>
+          );
+        }
+      }
+
+      root.render(<Welcome />);
+    </script>
+  </body>
+</html>
