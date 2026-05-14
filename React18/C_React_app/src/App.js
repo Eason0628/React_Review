@@ -1,4 +1,4 @@
-import Index from "./testFolder";
+import Index from "./StudyFolder/A_LifeCycle";
 import styles from "./App.module.css";
 function App() {
   return (
