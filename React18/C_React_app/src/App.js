@@ -1,4 +1,4 @@
-import Index from "./StudyFolder/A_LifeCycle";
+import Index from "./StudyFolder/C_HightComponentWitParam";
 import styles from "./App.module.css";
 function App() {
   return (
