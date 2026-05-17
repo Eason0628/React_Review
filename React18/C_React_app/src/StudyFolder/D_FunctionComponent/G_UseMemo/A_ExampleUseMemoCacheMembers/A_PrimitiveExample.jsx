@@ -4,7 +4,7 @@ function App () {
     const [price, setPrice] = useState(100)
     const [color, setColor] = useState("红⾊")
     let total = () => {
-        console.log("函数运⾏了")//修改颜⾊的时候函数也会重新执⾏，这是不合理的
+        console.log("函数运⾏了")//1.修改颜⾊响应式变量，组件调用Rencer方法，导致函数也会重新执⾏，这是不合理的
         return count * price
     }
     return (
