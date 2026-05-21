@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Outlet } from "react-router-dom";
+import Info from "./Info.jsx";
 function Hello () {
     const navigate = useNavigate();
 
     function handleClick () {
-        navigate("/about/", { state: { id: 123, name: "zhangsan" } });
+        navigate("/about", { state: { id: 123, name: "zhangsan" } });
     }
     return (
         <div>
@@ -16,8 +17,8 @@ function Hello () {
 
             {/* 对应的Link标签这样写 */}
             <Link to="/about" state={{ id: 123, name: "zhangsan" }}>Go to About</Link>
-
+            <Outlet />
         </div>
     );
 }
-export default Hello;
+export default Hello
