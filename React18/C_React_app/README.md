@@ -72,17 +72,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Node:
 
 1. 模块化的样式
-App.css默认是全局样式，如果想将其改成局部样式，可以将文件名修改成***.module.css
-    在引入的时候，模块化的样式会被当成一个对象，在引入的时候给对象命名，通过{styles.App}使用
-    import styles from "./App.module.css";
-    function App() {
-    return (
-    <>
-    <div className={styles.App}>Hello，React！</div>
-    </>
-    );
-    }
+   App.css默认是全局样式，如果想将其改成局部样式，可以将文件名修改成\*\*\*.module.css
+   在引入的时候，模块化的样式会被当成一个对象，在引入的时候给对象命名，通过{styles.App}使用
+   import styles from "./App.module.css";
+   function App() {
+   return (
+   <>
+   <div className={styles.App}>Hello，React！</div>
+   </>
+   );
+   }
 
 export default App;
 
-2.
+2.  useMemo用来缓存值、计算结果
+
+3.关于Reduxz:
+redux⼏⼤核⼼概念
+1.store:⽤来存数据的
+2.reducer:是⼀个函数，⽤来处理数据的
+3.action:是⼀个具有 type 字段的普通对象，⽤来描述要进⾏什么操作
+4.Action Creator：是⼀个创建并返回⼀个 action 对象的函数。它的作⽤是让你不必每次都⼿动编写action 对象
+5.Dispatch：Redux store 有⼀个⽅法叫 dispatch。更新 state 的唯⼀⽅法是调⽤ store.dispatch() 并传⼊⼀个 action 对象
+
+使用逻辑：
+1.store.js 引入configureStore定义reducers
+2.slice是一个RTK提供的工具，用来区分Redux不同业务逻辑模块
+定义counterSlice.js切片中定义共享数据和reducer，之后将reducer引入store.js中3.在根组件中使用provider包裹App组件,通过store属性 传入store.js 4.在需要使用数据的组件中引入useSelector,通过useSelector获取数据，以StoreTest.jsx为例
+
+1.counterSlice.js 练习slice的使用
+2.commentSlice.js 练习slice的使用
+3.commentAsyncSlice.js 练习自定义asyncThunk
+4.commentOffcialAsyncSlice.js 练习官方提供的asyncThunk
