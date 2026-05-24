@@ -8,6 +8,8 @@ import StoreTest from "../Views/StoreTest.jsx";
 import StoreTestB from "../Views/StoreTestB.jsx";
 import StoreTestC from "../Views/StoreTestC.jsx";
 import StoreTestD from "../Views/StoreTestD.jsx";
+import StoreTestE from "../Views/StoreTestE.jsx";
+import StoreTestF from "../Views/StoreTestF.jsx";
 
 // 创建⼀个路由器实例
 //createBrowserRouter 创建⼀个浏览器路由器对象，它接收⼀个路由配置数组作为参数。
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
   {
     path: "/storetestd",
     element: <StoreTestD />,
+  },
+  {
+    path: "/storeteste",
+    element: <StoreTestE />,
+  },
+  {
+    path: "/storetestf",
+    element: <StoreTestF />,
   },
 ]);
 export { router };
